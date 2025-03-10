@@ -3,12 +3,14 @@ import pandas as pd
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import os
-
+# EMAIL CREDENTIALS
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
-print(EMAIL_SENDER)
-print(EMAIL_RECEIVER)
+
+# BIZNESRADAR.PL CREDENTIALS 
+BR_EMAIL
+
 # 🔹 Tworzenie przykładowej tabeli
 data = {
     "Imię": ["Jan", "Anna", "Piotr"],

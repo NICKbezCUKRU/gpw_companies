@@ -2,7 +2,7 @@ name: Run Python Script Every Hour
 
 on:
   schedule:
-    - cron: '0 9-17 * * *'  # Co godzinę od 9:00 do 17:00 UTC (możesz dostosować)
+    - cron: '0,15,30,45 9-17 * * *'
 
 jobs:
   run-script:

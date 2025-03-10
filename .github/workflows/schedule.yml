@@ -3,7 +3,7 @@ name: Python Script - send email Every Hour
 on:
   push:
     branches:
-      - main  # Lub twoja główna gałąź
+      - main 
   schedule:
     - cron: "0,15,30,45 9-17 * * *"
 

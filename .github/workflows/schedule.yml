@@ -1,4 +1,4 @@
-name: Python Script - send email Every Hour
+name: Python Script - send Email
 
 on:
   push:

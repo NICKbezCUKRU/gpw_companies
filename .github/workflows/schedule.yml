@@ -1,0 +1,19 @@
+name: Run Python Script Every Hour
+
+on:
+  schedule:
+    - cron: '0 9-17 * * *'  # Co godzinę od 9:00 do 17:00 UTC (możesz dostosować)
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install -r requirements.txt || echo "No dependencies"
+      - name: Run script
+        run: python script.py

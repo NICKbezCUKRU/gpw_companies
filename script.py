@@ -2,6 +2,11 @@ import smtplib
 import pandas as pd
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import os
+
+EMAIL_SENDER = os.getenv("EMAIL_SENDER")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
 
 # 🔹 Tworzenie przykładowej tabeli
 data = {
@@ -17,9 +22,6 @@ table_html = df.to_html(index=False)
 # 🔹 Ustawienia e-maila
 SMTP_SERVER = "smtp.gmail.com"  # Dla Gmaila
 SMTP_PORT = 587
-EMAIL_SENDER = "twojemail@gmail.com"  # <-- Twój e-mail
-EMAIL_PASSWORD = "twoje_haslo"  # <-- Wygeneruj hasło aplikacji!
-EMAIL_RECEIVER = "odbiorca@example.com"
 
 # 🔹 Tworzenie wiadomości e-mail
 msg = MIMEMultipart()

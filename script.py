@@ -7,7 +7,8 @@ import os
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
-
+print(EMAIL_SENDER)
+print(EMAIL_RECEIVER)
 # 🔹 Tworzenie przykładowej tabeli
 data = {
     "Imię": ["Jan", "Anna", "Piotr"],

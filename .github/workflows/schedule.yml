@@ -1,4 +1,4 @@
-name: Python Script - send Email
+name: Python Script - Email
 
 on:
   push:

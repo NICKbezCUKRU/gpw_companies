@@ -46,6 +46,7 @@ if driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[
 # GO TO GPW SCANNER
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 time.sleep(10)
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 # table_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[contains(@class, "qTableFull")]')))
 # table_html = table_element.get_attribute('outerHTML')

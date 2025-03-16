@@ -1,5 +1,4 @@
 import smtplib
-import tempfile
 import pandas as pd
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -19,11 +18,9 @@ EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
 
 # BIZNESRADAR.PL 
 options = webdriver.ChromeOptions()
-#options.add_argument("--headless")  # Jeśli używasz GitHub Actions
+options.add_argument("--headless")  # Jeśli używasz GitHub Actions
 options.add_argument("--no-sandbox")  # Wymagane w GitHub Actions
 options.add_argument("--disable-dev-shm-usage")  # Rozwiązuje problemy z pamięcią
-user_data_dir = tempfile.mkdtemp()  # Tworzy unikalny folder tymczasowy
-options.add_argument(f"--user-data-dir={user_data_dir}")
 driver = webdriver.Chrome(service=webdriver.ChromeService(ChromeDriverManager().install()), options=options)
 driver.set_page_load_timeout(180)  # Zwiększenie limitu czasu ładowania strony do 180 sekund
 driver.maximize_window()
@@ -65,7 +62,7 @@ print(table_html)
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []
 try:
-    table_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[contains(@class, "qTableFull")]')))
+    table_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="sc-results-c"]/table/tbody')))
     table_html = table_element.get_attribute('outerHTML')
     tables = pd.read_html(table_html)
     df = tables[0]

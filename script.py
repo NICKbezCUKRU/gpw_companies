@@ -45,17 +45,17 @@ if driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[
     print("Udało się zalogować !")
 # GO TO GPW SCANNER
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
-time.sleep(10)
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
-# table_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[contains(@class, "qTableFull")]')))
-# table_html = table_element.get_attribute('outerHTML')
-tables = pd.read_html("https://www.biznesradar.pl/skaner-akcji/5864d929")
-df = tables[0]
-print(df)
-# GET TICKERS OF GPW COMPANIES FROM NAME IN BRACELESS
 company_tickers = []
-for index, row in df.iterrows():
+try:
+    table_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[contains(@class, "qTableFull")]')))
+    table_html = table_element.get_attribute('outerHTML')
+    tables = pd.read_html(table_html)
+    df = tables[0]
+    print(df)
+    # GET TICKERS OF GPW COMPANIES FROM NAME IN BRACELESS
+    for index, row in df.iterrows():
         # Wyciąganie nazwy w nawiasie z kolumny "Profil"
         nazwa = re.search(r'\((.*?)\)', row['Profil'])
         if nazwa:
@@ -65,7 +65,9 @@ for index, row in df.iterrows():
                 continue
             else:
                 company_tickers.append(row['Profil'])
-
+expect:
+    print("Tickery dodane ręcznie - nie znaleziono tablicy")
+    company_tickers = ['11BIT', 'ATAL', 'ACTION', 'AMBRA', 'ARCHICOM', 'ARTIFEX', 'CIGAMES', 'DECORA', 'DRAGOENT', 'DIGITANET', 'DOMDEV', 'FABRITY', 'FERRO', 'GAMEOPS', 'IMCOMPANY', 'KERNEL', 'KRKA', 'LUBAWA', 'MIRBUD', 'NEWAG', 'PLAYWAY', 'QUANTUM', 'QUERCUS', 'SNIEZKA', 'SONEL', 'SPYROSOFT', 'TSGAMES', 'VOXEL', 'WAWEL', 'XTB', 'YARRL']
 print(company_tickers)
 data_to_publish = pd.DataFrame(columns=["Ticker", "Data", "Wskaźniki", "Krzywe kroczące"])
 

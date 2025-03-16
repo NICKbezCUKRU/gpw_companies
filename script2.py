@@ -52,12 +52,10 @@ time.sleep(10)
 # html_source = driver.page_source
 # print(html_source)
 table = soup.find(id="sc-results-c")
-
-    # Jeśli tabela została znaleziona, możemy ją wydrukować
-    if table:
-        print(table.prettify())  # prettify dla lepszego formatowania HTML
-    else:
-        print("Tabela nie została znaleziona na stronie.")
+if table:
+    print(table.prettify())  # prettify dla lepszego formatowania HTML
+else:
+    print("Tabela nie została znaleziona na stronie.")
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []
 try:

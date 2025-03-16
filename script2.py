@@ -50,18 +50,14 @@ print(f"Page title is: {driver.title}")
 driver.execute_script("return document.readyState") == "complete"
 # html_source = driver.page_source
 # print(html_source)
-try:
-    table = wait.until(EC.presence_of_element_located((By.TAG_NAME, "table")))
-    print("Tabela się pojawiła!")
-except:
-    print("Nie znaleziono tabeli :(")
-display_value = driver.execute_script(
-    'return window.getComputedStyle(document.querySelector("#sc-results-c"), "::before").getPropertyValue("display");'
+style = driver.execute_script(
+    'return window.getComputedStyle(document.querySelector("#sc-results-c table")).getPropertyValue("display");'
 )
-print(display_value)  # Jeśli "none", to znaczy, że pseudo-element jest ukryty
-
-table_html = driver.find_element(By.ID, "sc-results-c").get_attribute("innerHTML")
-print(table_html)  # Sprawdź, czy w środku jest <table>
+print(style)  # Jeśli "none", to tabela jest ukryta
+table_html = driver.execute_script('''
+    return document.querySelector("#sc-results-c").shadowRoot.innerHTML;
+''')
+print(table_html)
 
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []

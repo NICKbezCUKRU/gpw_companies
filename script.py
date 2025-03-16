@@ -70,6 +70,7 @@ except:
     company_tickers = ['11BIT', 'ATAL', 'ACTION', 'AMBRA', 'ARCHICOM', 'ARTIFEX', 'CIGAMES', 'DECORA', 'DRAGOENT', 'DIGITANET', 'DOMDEV', 'FABRITY', 'FERRO', 'GAMEOPS', 'IMCOMPANY', 'KERNEL', 'KRKA', 'LUBAWA', 'MIRBUD', 'NEWAG', 'PLAYWAY', 'QUANTUM', 'QUERCUS', 'SNIEZKA', 'SONEL', 'SPYROSOFT', 'TSGAMES', 'VOXEL', 'WAWEL', 'XTB', 'YARRL']
 print(company_tickers)
 data_to_publish = pd.DataFrame(columns=["Ticker", "Data", "Wskaźniki", "Krzywe kroczące"])
+df = pd.DataFrame(company_tickers, columns=["Tickery"])
 
 for ticker in company_tickers:
     url = f"https://www.biznesradar.pl/analiza-techniczna-wskazniki/{ticker}"

@@ -29,7 +29,7 @@ def login_form():
     driver.find_element("xpath", '//*[@id="tabs-dialog-login"]/div/div[1]/div/form/div[4]/button').click()
 # GO INTO PAGE BIZNESRADAR.PL
 driver.get("https://biznesradar.pl")
-driver.implicitly_wait(10)
+driver.implicitly_wait(30)
 # COOKIES ACCEPT
 try:
     if driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]'):

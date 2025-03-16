@@ -50,10 +50,6 @@ print(f"Page title is: {driver.title}")
 driver.execute_script("return document.readyState") == "complete"
 # html_source = driver.page_source
 # print(html_source)
-table_html = driver.execute_script('''
-    return document.querySelector("#sc-results-c").shadowRoot.innerHTML;
-''')
-print(table_html)
 
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []

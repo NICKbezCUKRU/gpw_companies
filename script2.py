@@ -18,7 +18,7 @@ EMAIL_RECEIVER = os.getenv("EMAIL_RECEIVER")
 
 # BIZNESRADAR.PL 
 options = webdriver.ChromeOptions()
-options.add_argument("--headless")  # Jeśli używasz GitHub Actions
+#options.add_argument("--headless")  # Jeśli używasz GitHub Actions
 options.add_argument("--no-sandbox")  # Wymagane w GitHub Actions
 options.add_argument("--disable-dev-shm-usage")  # Rozwiązuje problemy z pamięcią
 driver = webdriver.Chrome(service=webdriver.ChromeService(ChromeDriverManager().install()), options=options)

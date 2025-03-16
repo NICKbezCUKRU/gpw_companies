@@ -31,28 +31,29 @@ def login_form():
     driver.find_element("xpath", '//*[@id="tabs-dialog-login"]/div/div[1]/div/form/div[2]/label/input').send_keys(EMAIL_PASSWORD)
     driver.find_element("xpath", '//*[@id="tabs-dialog-login"]/div/div[1]/div/form/div[4]/button').click()
 # GO INTO PAGE BIZNESRADAR.PL
-driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
+driver.get("https://www.biznesradar.pl")
 driver.implicitly_wait(5)
 print(f"Page title is: {driver.title}")
-try:
-    login_form()
-    print("Udało się zalogować !")
-except:
-    print("Cos poszło nie tak")
 # COOKIES ACCEPT
 try:
     if driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]'):
         driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]').click()
 except:
     print("Brak cookies")
+# LOGIN IF YOU ARE NOT LOGGED YET
+if driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[1]'):
+    login_form()
+    print("Udało się zalogować !")
 # GO TO GPW SCANNER
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
+print(f"Page title is: {driver.title}")
+html_source = driver.page_source
+print(html_source)
 try:
     driver.find_element("xpath", '//*[@id="sc-toolbar-c"]/div[1]/a[1]/span[2]').click()
     print("Wcisnięto")
 except:
     print("nie ma takiego przycisku")
-    driver.save_screenshot("error_screenshot.png")
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []

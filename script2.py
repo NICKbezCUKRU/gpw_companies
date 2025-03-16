@@ -24,7 +24,7 @@ options.add_argument("--disable-dev-shm-usage")  # Rozwiązuje problemy z pamię
 driver = webdriver.Chrome(service=webdriver.ChromeService(ChromeDriverManager().install()), options=options)
 driver.set_page_load_timeout(180)  # Zwiększenie limitu czasu ładowania strony do 180 sekund
 driver.maximize_window()
-wait = WebDriverWait(driver, 10)
+wait = WebDriverWait(driver, 20)
 def login_form():
     driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[1]').click()
     driver.find_element("xpath", '//*[@id="tabs-dialog-login"]/div/div[1]/div/form/div[1]/label/input').send_keys(EMAIL_SENDER)
@@ -50,14 +50,11 @@ print(f"Page title is: {driver.title}")
 driver.execute_script("return document.readyState") == "complete"
 # html_source = driver.page_source
 # print(html_source)
-table_html = driver.find_element(By.ID, "sc-results-c").get_attribute("innerHTML")
-print(table_html)  # Sprawdzisz, czy w środku jest <table>
 try:
-    driver.find_element("xpath", '//*[@id="sc-toolbar-c"]/div[1]/a[1]/span[2]').click()
-    print("Wcisnięto")
+    table = wait.until(EC.presence_of_element_located((By.TAG_NAME, "table")))
+    print("Tabela się pojawiła!")
 except:
-    print("nie ma takiego przycisku")
-driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    print("Nie znaleziono tabeli :(")
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []
 try:

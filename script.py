@@ -24,7 +24,7 @@ options.add_argument("--disable-dev-shm-usage")  # Rozwiązuje problemy z pamię
 
 driver = webdriver.Chrome(service=webdriver.ChromeService(ChromeDriverManager().install()), options=options)
 driver.maximize_window()
-
+wait = WebDriverWait(driver, 10)
 def login_form():
     driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[1]').click()
     driver.find_element("xpath", '//*[@id="tabs-dialog-login"]/div/div[1]/div/form/div[1]/label/input').send_keys(EMAIL_SENDER)

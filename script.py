@@ -31,10 +31,11 @@ def login_form():
 driver.get("https://biznesradar.pl")
 driver.implicitly_wait(10)
 # COOKIES ACCEPT
-if driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]'):
-    driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]').click()
-else:
-    print("brak cookies")
+try:
+    if driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]'):
+        driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]').click()
+except:
+    print("Brak cookies")
 # LOGIN IF YOU ARE NOT LOGGED YET
 if driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[1]'):
     login_form()

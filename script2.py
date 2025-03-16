@@ -53,10 +53,24 @@ time.sleep(10)
 # html_source = driver.page_source
 # print(html_source)
 table = soup.find(id="sc-results-c")
-if table:
-    print(table.prettify())  # prettify dla lepszego formatowania HTML
+response = requests.get(https://www.biznesradar.pl/skaner-akcji/5864d929)
+
+# Jeśli zapytanie jest udane (status code 200), przetwarzamy HTML
+if response.status_code == 200:
+    # Tworzymy obiekt BeautifulSoup z treści strony
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Możemy teraz pobrać zawartość strony, np. całą tabelę lub konkretny element
+    # Przykład: znajdź tabelę, której id to 'sc-results-c'
+    table = soup.find(id="sc-results-c")
+
+    # Jeśli tabela została znaleziona, możemy ją wydrukować
+    if table:
+        print(table.prettify())  # prettify dla lepszego formatowania HTML
+    else:
+        print("Tabela nie została znaleziona na stronie.")
 else:
-    print("Tabela nie została znaleziona na stronie.")
+    print(f"Błąd pobierania strony: {response.status_code}")
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []
 try:

@@ -53,7 +53,7 @@ time.sleep(10)
 # html_source = driver.page_source
 # print(html_source)
 table = soup.find(id="sc-results-c")
-response = requests.get(https://www.biznesradar.pl/skaner-akcji/5864d929)
+response = requests.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 
 # Jeśli zapytanie jest udane (status code 200), przetwarzamy HTML
 if response.status_code == 200:

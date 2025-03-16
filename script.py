@@ -32,7 +32,7 @@ def login_form():
     driver.find_element("xpath", '//*[@id="tabs-dialog-login"]/div/div[1]/div/form/div[4]/button').click()
 # GO INTO PAGE BIZNESRADAR.PL
 driver.get("https://biznesradar.pl")
-driver.implicitly_wait(30)
+driver.implicitly_wait(5)
 # COOKIES ACCEPT
 try:
     if driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]'):
@@ -47,11 +47,9 @@ if driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 time.sleep(10)
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
-table_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[contains(@class, "qTableFull")]')))
-
-
-table_html = table_element.get_attribute('outerHTML')
-tables = pd.read_html(table_html)
+# table_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[contains(@class, "qTableFull")]')))
+# table_html = table_element.get_attribute('outerHTML')
+tables = pd.read_html("https://www.biznesradar.pl/skaner-akcji/5864d929")
 df = tables[0]
 print(df)
 # GET TICKERS OF GPW COMPANIES FROM NAME IN BRACELESS

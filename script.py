@@ -65,7 +65,7 @@ try:
                 continue
             else:
                 company_tickers.append(row['Profil'])
-expect:
+except:
     print("Tickery dodane ręcznie - nie znaleziono tablicy")
     company_tickers = ['11BIT', 'ATAL', 'ACTION', 'AMBRA', 'ARCHICOM', 'ARTIFEX', 'CIGAMES', 'DECORA', 'DRAGOENT', 'DIGITANET', 'DOMDEV', 'FABRITY', 'FERRO', 'GAMEOPS', 'IMCOMPANY', 'KERNEL', 'KRKA', 'LUBAWA', 'MIRBUD', 'NEWAG', 'PLAYWAY', 'QUANTUM', 'QUERCUS', 'SNIEZKA', 'SONEL', 'SPYROSOFT', 'TSGAMES', 'VOXEL', 'WAWEL', 'XTB', 'YARRL']
 print(company_tickers)

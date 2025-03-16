@@ -44,7 +44,7 @@ print("Udało się zalogować !")
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 time.sleep(10)
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
-table_element = driver.find_element("css_selector", '#sc-results-c > table')
+table_element = driver.find_element(By.CSS_SELECTOR, '#sc-results-c > table')
 
 table_html = table_element.get_attribute('outerHTML')
 tables = pd.read_html(table_html)

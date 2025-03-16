@@ -55,6 +55,10 @@ try:
     print("Tabela się pojawiła!")
 except:
     print("Nie znaleziono tabeli :(")
+display_value = driver.execute_script(
+    'return window.getComputedStyle(document.querySelector("#sc-results-c"), "::before").getPropertyValue("display");'
+)
+print(display_value)  # Jeśli "none", to znaczy, że pseudo-element jest ukryty
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []
 try:

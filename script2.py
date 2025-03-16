@@ -33,7 +33,7 @@ def login_form():
 # GO INTO PAGE BIZNESRADAR.PL
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 driver.implicitly_wait(5)
-print(f"Page title is: {driver.title}"
+print(f"Page title is: {driver.title}")
 try:
     login_form()
     print("Udało się zalogować !")

@@ -40,8 +40,9 @@ except:
 # LOGIN IF YOU ARE NOT LOGGED YET
 if driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[1]'):
     login_form()
+    print("Udało się zalogować !")
 # GO TO GPW SCANNER
-print("Udało się zalogować !")
+
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 time.sleep(10)
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA

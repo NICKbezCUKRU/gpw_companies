@@ -48,8 +48,12 @@ if driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 print(f"Page title is: {driver.title}")
 driver.execute_script("return document.readyState") == "complete"
-html_source = driver.page_source
-print(html_source)
+# html_source = driver.page_source
+# print(html_source)
+before_content = driver.execute_script(
+    'return window.getComputedStyle(document.querySelector("#sc-results-c"), "::before").getPropertyValue("content");'
+)
+print(before_content)
 try:
     driver.find_element("xpath", '//*[@id="sc-toolbar-c"]/div[1]/a[1]/span[2]').click()
     print("Wcisnięto")

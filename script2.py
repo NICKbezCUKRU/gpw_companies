@@ -21,6 +21,8 @@ options = webdriver.ChromeOptions()
 #options.add_argument("--headless")  # Jeśli używasz GitHub Actions
 options.add_argument("--no-sandbox")  # Wymagane w GitHub Actions
 options.add_argument("--disable-dev-shm-usage")  # Rozwiązuje problemy z pamięcią
+user_data_dir = tempfile.mkdtemp()  # Tworzy unikalny folder tymczasowy
+options.add_argument(f"--user-data-dir={user_data_dir}")
 driver = webdriver.Chrome(service=webdriver.ChromeService(ChromeDriverManager().install()), options=options)
 driver.set_page_load_timeout(180)  # Zwiększenie limitu czasu ładowania strony do 180 sekund
 driver.maximize_window()

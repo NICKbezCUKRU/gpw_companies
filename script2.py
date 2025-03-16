@@ -50,10 +50,10 @@ print(f"Page title is: {driver.title}")
 driver.execute_script("return document.readyState") == "complete"
 # html_source = driver.page_source
 # print(html_source)
-before_content = driver.execute_script(
-    'return window.getComputedStyle(document.querySelector("#sc-results-c"), "::before").getPropertyValue("content");'
+display_value = driver.execute_script(
+    'return window.getComputedStyle(document.querySelector("#sc-results-c"), "::before").getPropertyValue("display");'
 )
-print(before_content)
+print(display_value)  # Jeśli "none", to znaczy, że pseudo-element jest ukryty
 try:
     driver.find_element("xpath", '//*[@id="sc-toolbar-c"]/div[1]/a[1]/span[2]').click()
     print("Wcisnięto")

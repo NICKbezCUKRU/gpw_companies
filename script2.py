@@ -31,18 +31,19 @@ def login_form():
     driver.find_element("xpath", '//*[@id="tabs-dialog-login"]/div/div[1]/div/form/div[2]/label/input').send_keys(EMAIL_PASSWORD)
     driver.find_element("xpath", '//*[@id="tabs-dialog-login"]/div/div[1]/div/form/div[4]/button').click()
 # GO INTO PAGE BIZNESRADAR.PL
-driver.get("https://biznesradar.pl")
+driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 driver.implicitly_wait(5)
+try:
+    login_form()
+    print("Udało się zalogować !")
+except:
+    print("Cos poszło nie tak")
 # COOKIES ACCEPT
 try:
     if driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]'):
         driver.find_element("xpath", '/html/body/div[5]/div[2]/div[2]/div[2]/div[2]/button[1]').click()
 except:
     print("Brak cookies")
-# LOGIN IF YOU ARE NOT LOGGED YET
-if driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[1]'):
-    login_form()
-    print("Udało się zalogować !")
 # GO TO GPW SCANNER
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 try:

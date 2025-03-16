@@ -1,5 +1,6 @@
 import smtplib
 import pandas as pd
+from selenium.webdriver.common.by import By
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import os

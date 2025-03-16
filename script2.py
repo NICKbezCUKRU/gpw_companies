@@ -33,6 +33,7 @@ def login_form():
 # GO INTO PAGE BIZNESRADAR.PL
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 driver.implicitly_wait(5)
+print(f"Page title is: {driver.title}"
 try:
     login_form()
     print("Udało się zalogować !")
@@ -51,6 +52,7 @@ try:
     print("Wcisnięto")
 except:
     print("nie ma takiego przycisku")
+    driver.save_screenshot("error_screenshot.png")
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []

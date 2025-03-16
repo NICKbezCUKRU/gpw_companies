@@ -5,7 +5,7 @@ on:
     branches:
       - main 
   schedule:
-    - cron: "0, 9-17 * * *"
+    - cron: "0 9-17 * * 1-5"
 
 jobs:
   run-script:

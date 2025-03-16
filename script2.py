@@ -53,7 +53,7 @@ time.sleep(10)
 # html_source = driver.page_source
 # print(html_source)
 #---------------------------------------------------------------------------------------------------------------------------
-table = wait.until(EC.visibility_of_element_located((By.ID, "sc-results-c")))
+time.sleep(60)
 
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []

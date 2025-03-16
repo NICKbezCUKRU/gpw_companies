@@ -11,6 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 import time
 import re
+from bs4 import BeautifulSoup
 # EMAIL CREDENTIALS
 EMAIL_SENDER = os.getenv("EMAIL_SENDER")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")

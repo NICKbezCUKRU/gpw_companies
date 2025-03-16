@@ -50,10 +50,6 @@ print(f"Page title is: {driver.title}")
 driver.execute_script("return document.readyState") == "complete"
 # html_source = driver.page_source
 # print(html_source)
-style = driver.execute_script(
-    'return window.getComputedStyle(document.querySelector("#sc-results-c table")).getPropertyValue("display");'
-)
-print(style)  # Jeśli "none", to tabela jest ukryta
 table_html = driver.execute_script('''
     return document.querySelector("#sc-results-c").shadowRoot.innerHTML;
 ''')

@@ -1,6 +1,5 @@
 import smtplib
 import pandas as pd
-import requests
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -26,7 +25,7 @@ options.add_argument("--disable-dev-shm-usage")  # Rozwiązuje problemy z pamię
 driver = webdriver.Chrome(service=webdriver.ChromeService(ChromeDriverManager().install()), options=options)
 driver.set_page_load_timeout(180)  # Zwiększenie limitu czasu ładowania strony do 180 sekund
 driver.maximize_window()
-wait = WebDriverWait(driver, 20)
+wait = WebDriverWait(driver, 10)
 def login_form():
     driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[1]').click()
     driver.find_element("xpath", '//*[@id="tabs-dialog-login"]/div/div[1]/div/form/div[1]/label/input').send_keys(EMAIL_SENDER)
@@ -53,24 +52,9 @@ driver.execute_script("return document.readyState") == "complete"
 time.sleep(10)
 # html_source = driver.page_source
 # print(html_source)
-response = requests.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
+#---------------------------------------------------------------------------------------------------------------------------
+table = wait.until(EC.visibility_of_element_located((By.ID, "sc-results-c")))
 
-# Jeśli zapytanie jest udane (status code 200), przetwarzamy HTML
-if response.status_code == 200:
-    # Tworzymy obiekt BeautifulSoup z treści strony
-    soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Możemy teraz pobrać zawartość strony, np. całą tabelę lub konkretny element
-    # Przykład: znajdź tabelę, której id to 'sc-results-c'
-    table = soup.find(id="sc-results-c")
-
-    # Jeśli tabela została znaleziona, możemy ją wydrukować
-    if table:
-        print(table.prettify())  # prettify dla lepszego formatowania HTML
-    else:
-        print("Tabela nie została znaleziona na stronie.")
-else:
-    print(f"Błąd pobierania strony: {response.status_code}")
 # GET TABLE WITH GPW COMPANIES THAT REQUIRES ACCEPTANCE CRITERIA
 company_tickers = []
 try:

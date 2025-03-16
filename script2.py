@@ -46,7 +46,7 @@ if driver.find_element("xpath", '//*[@id="main-props"]/header/div/div[2]/button[
 # GO TO GPW SCANNER
 driver.get("https://www.biznesradar.pl/skaner-akcji/5864d929")
 try:
-    driver.find_element("xpath", "//*[@id="sc-toolbar-c"]/div[1]/a[1]/span[2]").click()
+    driver.find_element("xpath", '//*[@id="sc-toolbar-c"]/div[1]/a[1]/span[2]').click()
     print("Wcisnięto")
 except:
     print("nie ma takiego przycisku")
